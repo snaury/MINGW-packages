@@ -52,9 +52,5 @@ package() {
     cd ${srcdir}/winpthreads-build-${MINGW_CHOST}
     make DESTDIR=${pkgdir} install
 	
-	mkdir -p ${pkgdir}${MINGW_PREFIX}/${MINGW_CHOST}
-	mv ${pkgdir}${MINGW_PREFIX}/include ${pkgdir}${MINGW_PREFIX}/${MINGW_CHOST}/
-	mv ${pkgdir}${MINGW_PREFIX}/lib ${pkgdir}${MINGW_PREFIX}/${MINGW_CHOST}/
-	
 	install -Dm644 ${srcdir}/${_realname}/COPYING ${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}/COPYING
 }

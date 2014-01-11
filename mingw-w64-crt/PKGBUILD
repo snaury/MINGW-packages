@@ -40,11 +40,10 @@ build() {
 	esac
     mkdir -p ${srcdir}/crt-${MINGW_CHOST} && cd ${srcdir}/crt-${MINGW_CHOST}
     ${srcdir}/${_realname}/configure \
-		--prefix=${MINGW_PREFIX}/${MINGW_CHOST} \
+		--prefix=${MINGW_PREFIX} \
 		--build=${MINGW_CHOST} \
 		--host=${MINGW_CHOST} \
         --target=${MINGW_CHOST} \
-		--with-sysroot=${MINGW_PREFIX}/${MINGW_CHOST} \
 		--enable-wildcard \
         ${_crt_configure_args}
     make

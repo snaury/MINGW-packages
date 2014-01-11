@@ -45,7 +45,6 @@ build() {
     --prefix=${MINGW_PREFIX} \
     --disable-werror \
 	--enable-lto \
-	--with-sysroot=${MINGW_PREFIX} \
 	--with-libiconv-prefix=${MINGW_PREFIX} \
 	$_conf \
 	--disable-nls \
@@ -66,12 +65,6 @@ check() {
 package() {
   cd ${srcdir}/binutils-build
   make DESTDIR=${pkgdir} install
-  
-  mkdir -p ${pkgdir}${MINGW_PREFIX}/{lib,include}/binutils
-  mkdir -p ${pkgdir}${MINGW_PREFIX}/${MINGW_CHOST}/include
-  cp ${pkgdir}${MINGW_PREFIX}/include/ansidecl.h ${pkgdir}${MINGW_PREFIX}/${MINGW_CHOST}/include/
-  mv ${pkgdir}${MINGW_PREFIX}/include/*.h ${pkgdir}${MINGW_PREFIX}/include/binutils
-  mv ${pkgdir}${MINGW_PREFIX}/lib/*.a ${pkgdir}${MINGW_PREFIX}/lib/binutils
   
   # Remove unwanted files
   rm -rf ${pkgdir}${MINGW_PREFIX}/share
